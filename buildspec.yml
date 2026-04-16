@@ -1,0 +1,20 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.9
+  pre_build:
+    commands:
+      - echo Iniciando sesión en Docker...
+      # Aquí podrías agregar login a ECR si usaras un registro de AWS
+  build:
+    commands:
+      - echo Construyendo la imagen de Docker...
+      - docker build -t mi-app-flask ./app
+  post_build:
+    commands:
+      - echo Construcción completada el `date`
+artifacts:
+  files:
+    - '**/*'
